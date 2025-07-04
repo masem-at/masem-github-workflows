@@ -6,7 +6,7 @@ import { callOpenAPI } from "./utils/openai";
 
 export async function generateReadme() {
     const pkg = JSON.parse(readFileSync('package.json', 'utf-8'));
-    const bot = pkg.masmBot;
+    const bot = pkg.masemBot;
     const prompt = `
         You're a developer documentation writer. Create a full README.md for this project:
 
