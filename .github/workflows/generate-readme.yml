@@ -23,9 +23,9 @@ jobs:
       - name: Generate README with OpenAI
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-        shell: bash
+        shell: cmd
         run: npx tsx scripts/build-readme.ts
-        
+ 
       - name: Commit README
         run: |
           git config --global user.name "masem-bot"
