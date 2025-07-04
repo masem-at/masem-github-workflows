@@ -44,7 +44,7 @@ fetch('https://api.openai.com/v1/chat/completions', {
     temperature:0.5,
     messages: [
       { role:'system', content:'You are a helpful documentation generator.' },
-      { role:'user', content:prompt }
+      { role:'user', content:readmePrompt }
     ]
   })
 })
