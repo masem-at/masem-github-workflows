@@ -1,0 +1,33 @@
+# .github/workflows/generate-readme.yml
+name: Generate Project README
+
+on:
+    workflow_dispatch:
+
+permissions:
+   contents: write 
+
+jobs:
+  generate-readme:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout the target project
+        uses: actions/checkout@v3
+        
+      - name: Setup node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 22
+
+      - name: Generate README with OpenAI
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          npm install node-fetch@2
+          node <<EOF
+          const fs = require('fs');
+          const path = require('path');
+          const fetch = require('node-fetch');
+
+          const key = 
