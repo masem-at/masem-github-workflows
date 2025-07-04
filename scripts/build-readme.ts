@@ -50,7 +50,7 @@ fetch('https://api.openai.com/v1/chat/completions', {
 })
 .then(res => res.json())
 .then(data => {
-  const content = data.choices[0]?.messsage?.content;
+  const content = data.choices[0]?.message?.content;
   if (!content) {
     console.error('❌ No content from OpenAI', JSON.stringify(data));
     process.exit(1);
