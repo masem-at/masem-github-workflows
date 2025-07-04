@@ -2,7 +2,7 @@
 name: Generate Project README
 
 on:
-    workflow_dispatch:
+  workflow_call:
 
 permissions:
    contents: write 
