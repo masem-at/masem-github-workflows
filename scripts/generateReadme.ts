@@ -6,13 +6,14 @@ import { callOpenAPI } from "./utils/openai";
 
 export async function generateReadme() {
     const pkg = JSON.parse(readFileSync('package.json', 'utf-8'));
+    const bot = pkg.masmBot;
     const prompt = `
         You're a developer documentation writer. Create a full README.md for this project:
 
-        - Name: ${pkg.name}
-        - Description: ${pkg.Description}
-        - repoUrl: ${pkg.repoUrl || 'no'}
-        - websiteUrl: ${pkg.websiteUrl || 'no'}
+        - Name: ${bot.name}
+        - Description: ${bot.Description}
+        - repoUrl: ${bot.repoUrl || 'no'}
+        - websiteUrl: ${bot.websiteUrl || 'no'}
 
         Include:
         1. Project Intro
