@@ -33,10 +33,10 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
  
-      - name: Commit README
+      - name: Commit README and diagram
         run: |
           git config --global user.name "masem-bot"
           git config --global user.email "actions@github.com"
-          git add README.md
+          git add README.md assets/usage.svg
           git commit -m "🤖 Auto-generated README"
           git push
