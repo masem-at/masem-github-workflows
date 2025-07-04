@@ -10,7 +10,7 @@ export async function callOpenAPI(prompt: string, model = 'gpt-3.5-turbo'): Prom
         process.exit(1);
     }
 
-    const response = await fetch('https://api.openapi.com/v1/chat/completions', {
+    const response = await fetch('https://api.openai.com/v1/chat/completions', {
         method: 'POST',
         headers: {
             'Content-Type':'application/json',
