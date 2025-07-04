@@ -15,6 +15,6 @@ export async function generateDiagram() {
     if (!content) throw new Error('No diagram content generated');
 
     mkdirSync('assets', { recursive:true });
-    writeFileSync('assets/usage.txt', content.trim());
+    writeFileSync('assets/usage.svg', content.trim());
     console.log('✅ Diagram saved to assets/usage.svg');
 }
