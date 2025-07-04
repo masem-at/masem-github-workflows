@@ -23,6 +23,7 @@ jobs:
       - name: Generate README with OpenAI
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        shell: bash
         run: |
           npm install node-fetch@2
           node <<EOF
