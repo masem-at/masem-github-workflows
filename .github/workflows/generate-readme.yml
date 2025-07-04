@@ -3,28 +3,35 @@ name: Generate Project README
 
 on:
   workflow_call:
+    secrets:
+      OPENAI_API_KEY:
+        required: true
 
 permissions:
-   contents: write 
+  contents: write 
 
 jobs:
   generate-readme:
     runs-on: self-hosted
 
     steps:
-      - name: Checkout the target project
+      - name: Checkout caller repo
         uses: actions/checkout@v3
-        
-      - name: Setup node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 22
 
+      - name: Checkout shared logic
+        uses: actions/checkout@v3
+        with:
+          repository: masem-at/masem-github-workflows
+          path: .masem-shared
+
+      - name: Install deps
+        run: npm install node-fetch2
+      
       - name: Generate README with OpenAI
+        shell: cmd
+        run: npx tsx .masem-shared/scripts/build-readme.ts
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-        shell: cmd
-        run: npx tsx scripts/build-readme.ts
  
       - name: Commit README
         run: |

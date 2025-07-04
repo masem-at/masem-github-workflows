@@ -1,6 +1,9 @@
 {
+  "name": "masem-github-workflows",
+  "type": "module",
   "devDependencies": {
-    "@types/node": "^24.0.10"
+    "@types/node": "^24.0.10",
+    "tsx": "^4.20.3"
   },
   "dependencies": {
     "node-fetch": "^3.3.2"
