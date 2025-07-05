@@ -1,26 +1,23 @@
 # masem-github-workflows
 
-🛠️ Shared GitHub Actions workflows for projects in the [masem-at](https://github.com/masem-at) organization.
+A centralized repository of reusable GitHub Actions workflows, designed to streamline development and automation across all repositories and projects — both inside and outside the `masem-at` GitHub organization — the tools help developers stay consistent, automate routine work, and accelerate delivery with minimal setup.
 
-## Workflows
+## 🔧 What’s Included
 
-### 🔄 `generate-readme.yml`
-Generates and updates the `README.md` of a project using OpenAI, based on:
-- `package.json` metadata
-- Files in the `src/` folder
-- Example usage snippets
+This project currently offers the following reusable workflows:
 
-> This workflow is designed to be reused in any project repo via:
->
-> ```yaml
-> uses: masem-at/masem-github-workflows/generate-readme.yml@main
-> ```
+### ✅ README Builder
 
----
+Automatically generates and commits a project-specific `README.md` based on your package metadata and source code.
 
-## Usage
+- Uses OpenAI to generate developer-friendly documentation
+- Includes support for SVG/ASCII usage diagrams
+- Writes results to `README.md` and `assets/` folder
+- Ideal for monorepos or standardized project setups
 
-1. Add a calling workflow like:
+## 🔁 How to Use
+
+In your project repo:
 
 ```yaml
 # .github/workflows/use-shared-readme-builder.yml
@@ -31,14 +28,32 @@ on:
 
 jobs:
   call-shared-workflow:
-    uses: masem-at/masem-github-workflows/generate-readme.yml@main
+    uses: masem-at/masem-github-workflows/.github/workflows/generate-readme.yml@main
+    secrets:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+    permissions:
+      contents: write
 ```
 
-2. Make sure `OPENAI_API_KEY` is available in repo secrets.
-3. Trigger manually in the Actions tab.
+## 💡 Requirements
 
----
+- Node.js environment with access to source code in `src/`
+- `OPENAI_API_KEY` secret must be set in your repo
 
-## License
+## 📁 Folder Structure
 
-MIT
+```
+masem-github-workflows/
+├── .github/
+│   └── workflows/
+│       └── generate-readme.yml
+└── ...
+```
+
+## 📌 Why Centralize?
+
+Centralizing workflows improves consistency, simplifies maintenance, and accelerates onboarding across multiple projects.
+
+## 🌐 Learn More
+
+Visit [masem.at/projects/github-tools](https://masem.at/projects/github-tools) for usage examples and additional automation tools.
